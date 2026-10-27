@@ -1,8 +1,6 @@
-version: "3.9"
-
 services:
   devopsdb:
-    image: shaikmustafa/flm-oct:db
+    image: dbimage
     ports:
       - "3306:3306"
     deploy:
@@ -11,7 +9,7 @@ services:
       - mynetwork
 
   application:
-    image: shaikmustafa/flm-oct:javaapp
+    image: appimage
     ports:
       - "1111:8080"
     deploy:
@@ -20,7 +18,3 @@ services:
       - devopsdb
     networks:
       - mynetwork
-
-networks:
-  mynetwork:
-    driver: overlay
