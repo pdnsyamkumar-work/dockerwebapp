@@ -3,11 +3,18 @@ services:
     image: dbimage
     ports:
       - "3306:3306"
+    volume:
+      - devopsdbdata:/var/lib/mysql
 
 
   application:
     image: appimage
     depends_on:
       - devopsdb
+    ports:
+      - "1111:80"
     deploy:
       replicas: 3
+
+volumes:
+  devopsdbdata:
