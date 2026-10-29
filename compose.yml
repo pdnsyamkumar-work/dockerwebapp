@@ -3,7 +3,7 @@ services:
     image: dbimage
     ports:
       - "3306:3306"
-    volume:
+    volumes:
       - devopsdbdata:/var/lib/mysql
 
 
