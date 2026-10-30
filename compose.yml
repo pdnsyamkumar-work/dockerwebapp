@@ -5,21 +5,11 @@ services:
       - "3306:3306"
     volumes:
       - devopsdbdata:/var/lib/mysql
-      
-  nexus:
-    image: sonatype/nexus3:3.95.5-alpine
-    ports:
-      - "8081:8081"
-    deploy:
-      replicas: 1
-    volumes:
-      - nexus-data:/nexus-data
 
   application:
     image: appimage
     depends_on:
       - devopsdb
-      - nexus
     ports:
       - "1111:8080"
     deploy:
@@ -27,4 +17,3 @@ services:
 
 volumes:
   devopsdbdata:
-  nexus-data:
