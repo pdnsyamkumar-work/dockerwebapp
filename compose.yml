@@ -13,7 +13,7 @@ services:
     ports:
       - "1111:8080"
     deploy:
-      replicas: 3
+      replicas: 5
 
 volumes:
   devopsdbdata:
