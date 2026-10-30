@@ -12,6 +12,8 @@ services:
       - "8081:8081"
     deploy:
       replicas: 1
+    volumes:
+      - nexus-data:/nexus-data
 
   application:
     image: appimage
@@ -25,3 +27,4 @@ services:
 
 volumes:
   devopsdbdata:
+  nexus-data:
