@@ -1,19 +1,27 @@
 services:
   devopsdb:
-    image: dbimage
+    image: pdnsyamkumarwork/flm-java:db
     ports:
       - "3306:3306"
     volumes:
       - devopsdbdata:/var/lib/mysql
+    networks:
+      - mynetwork
+    deploy:
+      replicas: 1
 
   application:
-    image: appimage
+    image: pdnsyamkumarwork/flm-java:javaapp
     depends_on:
       - devopsdb
     ports:
       - "1111:8080"
     deploy:
-      replicas: 5
+      replicas: 3
 
 volumes:
   devopsdbdata:
+
+networks:
+  mynetwork:
+    driver: overlay
